@@ -16,3 +16,13 @@ type Config struct {
 	//App Settings
 	POLL_INTERVAL_SECONDS uint8 `mapstructure:"POLL_INTERVAL_SECONDS"`
 }
+
+type CapitalData struct {
+	ID             int     `database:"id"`
+	InstrumentName string  `database:"instrument"`
+	Timestamp      string  `database:"timestamp"`
+	BidPrice       float64 `database:"bid_price"`
+	AskPrice       float64 `database:"ask_price"`
+	LastPrice      float64 `database:"last_price"`
+	Volume         float64 `database:"volume"`
+}
