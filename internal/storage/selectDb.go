@@ -18,7 +18,7 @@ func SelectDb(whichDB string) (*sql.DB, error) {
 			return nil, fmt.Errorf("Error; %s", err)
 		}
 		_, err = db.Exec(`CREATE TABLE IF NOT EXISTS cap (
-    	id INTEGER PRIMARY KEY, 
+    	uuid TEXT PRIMARY KEY, 
     	instrument TEXT,
 		timestamp datetime,
 		bid_price float,
@@ -35,7 +35,7 @@ func SelectDb(whichDB string) (*sql.DB, error) {
 			return nil, fmt.Errorf("Error; %s", err)
 		}
 		_, err = db.Exec(`CREATE TABLE IF NOT EXISTS cap (
-    	id SERIAL PRIMARY KEY,
+    	uuid uuid PRIMARY KEY,
     	instrument TEXT,
     	timestamp TIMESTAMP,
     	bid_price float,

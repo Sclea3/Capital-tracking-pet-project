@@ -1,5 +1,7 @@
 package models
 
+import "time"
+
 type Config struct {
 	//Capital.com
 	CAPITAL_API_KEY string `mapstructure:"CAPITAL_API_KEY"`
@@ -18,11 +20,11 @@ type Config struct {
 }
 
 type CapitalData struct {
-	ID             int     `database:"id"`
-	InstrumentName string  `database:"instrument"`
-	Timestamp      string  `database:"timestamp"`
-	BidPrice       float64 `database:"bid_price"`
-	AskPrice       float64 `database:"ask_price"`
-	LastPrice      float64 `database:"last_price"`
-	Volume         float64 `database:"volume"`
+	UUID           string    `database:"uuid"`
+	InstrumentName string    `database:"instrument"`
+	Timestamp      time.Time `database:"timestamp"`
+	BidPrice       float64   `database:"bid_price"`
+	AskPrice       float64   `database:"ask_price"`
+	LastPrice      float64   `database:"last_price"`
+	Volume         float64   `database:"volume"`
 }
