@@ -3,9 +3,12 @@ package main
 import (
 	"fmt"
 	"log"
+
+	"CapitalParser/internal/config"
 )
 
 func main() {
+	config.LoadConfig()
 	fmt.Println("Starting Capital.com Market Monitor...")
 
 	// TODO: Initialize configuration
