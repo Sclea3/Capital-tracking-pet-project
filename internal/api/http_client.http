@@ -1,0 +1,9 @@
+### POST to get auth tokens
+POST https://api-capital.backend-capital.com/api/v1/session
+Content-Type: application/json
+X-CAP-API-KEY: *
+
+{
+  "identifier": "*",
+  "password": "*"
+}

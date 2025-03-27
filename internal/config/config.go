@@ -19,7 +19,8 @@ func LoadConfig() (models.Config, error) {
 	}
 
 	capitalApiKey := os.Getenv("CAPITAL_API_KEY")
-	capitalApiUrl := os.Getenv("CAPITAL_API_URL")
+	capitalUsername := os.Getenv("CAPITAL_USERNAME")
+	capitalPassword := os.Getenv("CAPITAL_PASSWORD")
 
 	dbType := os.Getenv("DB_TYPE")
 	dbConnectionString := os.Getenv("DB_CONNECTION_STRING")
@@ -35,14 +36,15 @@ func LoadConfig() (models.Config, error) {
 	}
 
 	//Check if all environment variables are set
-	err = checkEnvVariables(capitalApiKey, capitalApiUrl, dbType, dbConnectionString, telegramBotToken, telegramChatId, pollIntervalSeconds)
+	err = checkEnvVariables(capitalApiKey, capitalUsername, capitalPassword, dbType, dbConnectionString, telegramBotToken, telegramChatId, pollIntervalSeconds)
 	if err != nil {
 		return models.Config{}, err
 	}
 
 	return models.Config{
 		CAPITAL_API_KEY:       capitalApiKey,
-		CAPITAL_API_URL:       capitalApiUrl,
+		CAPITAL_USERNAME:      capitalUsername,
+		CAPITAL_PASSWORD:      capitalPassword,
 		DB_TYPE:               dbType,
 		DB_CONNECTION_STRING:  dbConnectionString,
 		TELEGRAM_BOT_TOKEN:    telegramBotToken,
@@ -51,10 +53,11 @@ func LoadConfig() (models.Config, error) {
 	}, nil
 }
 
-func checkEnvVariables(apiKey, apiUrl, dbType, dbConString, botToken, chatId string, pollInterval int) error {
+func checkEnvVariables(apiKey, username, password, dbType, dbConString, botToken, chatId string, pollInterval int) error {
 	envVars := map[string]string{
 		"CAPITAL_API_KEY":       apiKey,
-		"CAPITAL_API_URL":       apiUrl,
+		"CAPITAL_USERNAME":      username,
+		"CAPITAL_PASSWORD":      password,
 		"DB_TYPE":               dbType,
 		"DB_CONNECTION_STRING":  dbConString,
 		"TELEGRAM_BOT_TOKEN":    botToken,
